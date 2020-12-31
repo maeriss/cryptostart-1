@@ -12,7 +12,7 @@ JWT_KEY = votresecret
 Le username et le mot de passe autorisés à se login sont codés en dur dans le fichier index.js situé dans le serveur.
 Le username doit obligatoirement être sous la forme d'une adresse mail ou l'input ne l'acceptera pas.
 Les informations de connexion dans l'état actuel sont :
-USERNAME: marie.appolaire@edu.devinci.fr
+USERNAME: marie. appolaire @ edu.devinci .fr (sans les espaces)
 PASSWORD: 123456
 
 Pour les changer, rendez vous aux lignes 16 et 17 de l'index.js.
