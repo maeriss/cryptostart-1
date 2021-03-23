@@ -19,12 +19,6 @@ Pour les changer, rendez vous aux lignes 16 et 17 de l'index.js.
 
 
 # Pour démarrer le projet
-
-```
-npm install
-```
-
-
 ## serveur
 
 Se rendre dans le serveur avec
@@ -50,7 +44,7 @@ puis faire:
 
 ```
 npm install
-npm run serve
+npm run serve ou npm start
 ```
 
 Se rendre à l'adresse donnée par le client pour voir le site
