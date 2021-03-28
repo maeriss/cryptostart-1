@@ -2,14 +2,14 @@
     <div class="loginForm">
         <h2 class="loginHeading">Login</h2>
         <p>Veuillez rentrer votre e-mail et votre mot de passe pour vous connecter</p>
-        <form @submit.prevent="login">
+        <form @submit.prevent="tryToLogin">
             <div id="labels" class="column">
                 <label for="email">Votre E-mail</label>
                 <label for="password">Mot de passe</label>
             </div>
             <div class="column">
-                <input placeholder="email" type="email" v-model="username">
-                <input placeholder="password" type="password" v-model="password">
+                <input placeholder="email" type="email" v-model="username" id="login">
+                <input placeholder="password" type="password" v-model="password" id="password">
             </div>
             <div class="submitButton">
                 <button type="submit">Login</button>
@@ -19,36 +19,22 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
 export default {
+    name: 'Login',
+
     data () {
         return {
-            username: '',
-            password: ''
+            username: undefined,
+            password: undefined
         }
     },
     methods: {
-        ...mapMutations([
-            'setUser',
-            'setToken'
-        ]),
-        async login (e) {
-            e.preventDefault()
-            const response = await fetch('http://localhost:3000/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username: this.username,
-                    password: this.password
-                })
-            })
-            const { user, token } = await response.json()
-            this.setUser(user)
-            this.setToken(token)
-            this.$router.push('/')
-        }
+        tryToLogin () {
+      const username = this.username
+      const password = this.password
+      this.$store.dispatch('login', { username, password })
+      // this.$router.push('/')
+      }
     }
 }
 </script>

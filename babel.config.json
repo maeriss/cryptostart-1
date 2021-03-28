@@ -1,0 +1,7 @@
+{
+  "babelrcRoots": [
+      ".",
+      "server",
+      "client"
+  ]
+}

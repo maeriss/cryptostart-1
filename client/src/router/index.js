@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import { checkTokenBeforeEnter } from './router-utils'
 
 const routes = [
   {
@@ -18,12 +19,14 @@ const routes = [
   {
     path: '/currencies',
     name: 'Cryptomonnaies',
-    component: () => import('../views/Currencies.vue')
+    component: () => import('../views/Currencies.vue'),
+    beforeEnter: checkTokenBeforeEnter
   },
   {
     path: '/blockchain',
     name: 'Blockchain',
-    component: () => import('../views/Nothing.vue')
+    component: () => import('../views/Nothing.vue'),
+    beforeEnter: checkTokenBeforeEnter
   },
   {
     path: '/login',
@@ -33,12 +36,14 @@ const routes = [
   {
     path: '/currencies/monero',
     name: 'Monero',
-    component: () => import('../views/Monero.vue')
+    component: () => import('../views/Monero.vue'),
+    beforeEnter: checkTokenBeforeEnter
   },
   {
     path: '/nothing',
     name: 'Nothing',
-    component: () => import('../views/Nothing.vue')
+    component: () => import('../views/Nothing.vue'),
+    beforeEnter: checkTokenBeforeEnter
   }
 ]
 

@@ -43,8 +43,15 @@
 
 <script>
 import ResponsiveNavigation from '@/components/ResponsiveNavigation'
-
+import { mapGetters, mapState } from 'vuex'
 export default {
+    name: 'App',
+    computed: {
+    ...mapState({
+      user: state => state.user.userdata
+    }),
+    ...mapGetters(['isLoggedIn'])
+  },
     components: {
         ResponsiveNavigation
     },
