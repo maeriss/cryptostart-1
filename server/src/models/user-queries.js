@@ -85,10 +85,7 @@ export async function updateUser (userData) {
 }
 
 export function modifyUser (userData) {
-  User.findById(userData.id)
-    .then(user => {
-      // (...)
-    })
+  return User.findByIdAndUpdate(userData.id,userData,{new: true})
 }
 
 /**

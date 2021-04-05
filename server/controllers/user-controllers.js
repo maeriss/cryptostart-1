@@ -1,4 +1,4 @@
-import { createUser } from '../models/user-queries.js'
+import { createUser, modifyUser, getUsers} from '../models/user-queries.js'
 
 export const createUserController = async (req, res) => {
   // Récupération des données de la requête
@@ -37,7 +37,7 @@ export const updateUserController = async (req, res) => {
       })
     })*/
     try {
-      const user = await updateUser(userData)
+      const user = await modifyUser(userData)
       res.status(201).json({
         success: true,
         user
@@ -48,4 +48,19 @@ export const updateUserController = async (req, res) => {
         message: err.message
       })
     }
+}
+
+export const getAllUsers = async (req,res) => {
+  try{
+    const users = await getUsers()
+    res.status(200).json({
+      succes: true,
+      users
+    })
+  }catch(err){
+    res.status(500).json({
+      success: false,
+      message: err.message
+    })
+  }
 }
