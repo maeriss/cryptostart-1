@@ -1,6 +1,6 @@
-const tokenUtils = require('../utils/token-utils.js')
+import { checkToken } from '../utils/token-utils.js'
 
-function verifyToken (req, res, next) {
+export function verifyToken (req, res, next) {
   try {
     // split
     // const token = req.header('Authorization').split(' ')[1]
@@ -8,7 +8,7 @@ function verifyToken (req, res, next) {
     // const token = req.header('Authorization').substring(7)
     // replace
     const token = req.header('Authorization').replace('Bearer ', '')
-    tokenUtils.checkToken(token)
+    checkToken(token)
     next()
   } catch (error) {
     res.json({
@@ -17,5 +17,3 @@ function verifyToken (req, res, next) {
     })
   }
 }
-
-module.exports = verifyToken

@@ -33,7 +33,7 @@ export default {
       const username = this.username
       const password = this.password
       this.$store.dispatch('login', { username, password })
-      // this.$router.push('/')
+      this.$router.push('/')
       }
     }
 }

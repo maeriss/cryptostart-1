@@ -23,14 +23,15 @@ export default {
 
     actions: {
         login ({ commit }, credentials) {
-            api.login(credentials)
+            return api.login(credentials)
             .then(userdata => {
             const { success, user, token, message } = userdata
             if (!success) {
                 // TODO: Afficher proprement le message contenu dans `message` dans l'interface
                 //       et non dans la console comme ici
                 console.error(message)
-                return
+                // return
+                return userdata.status(400).send({ message })
             }
             localStorage.setItem('token', token)
             commit('setUser', user)

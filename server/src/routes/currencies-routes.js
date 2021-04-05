@@ -1,4 +1,4 @@
-const express = require('express')
+import express from 'express'
 const router = new express.Router()
 
 const apiBaseUrl = 'https://pro-api.coinmarketcap.com/v1'
@@ -78,4 +78,4 @@ router.get('/:currencyslug', function getRoot (req, res) {
     })
 })
 
-module.exports = router
+export { router as currenciesRoutes }

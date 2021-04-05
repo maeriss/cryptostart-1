@@ -47,7 +47,7 @@ import { mapGetters } from 'vuex'
     }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped >
     nav {
         height: 60px;
         width: 100%;

@@ -87,7 +87,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import url('https://unpkg.com/ionicons@4.2.2/dist/css/ionicons.min.css');
 
 figure {

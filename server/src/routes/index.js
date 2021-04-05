@@ -1,15 +1,16 @@
-const fetch = require('isomorphic-fetch')
-const express = require('express')
+import fetch from 'isomorphic-fetch'
+import express from 'express'
 
-const currenciesRoutes = require('./currencies-routes.js')
-const authRoutes = require('./auth-routes.js')
+import { currenciesRoutes } from './currencies-routes.js'
+import { authRoutes } from './auth-routes.js'
+import {userRoutes } from './user-routes.js'
 
-const verifyToken = require('../middlewares/verify-tokens.js')
+import { verifyToken } from '../middlewares/verify-tokens.js'
 
 const router = new express.Router()
 
 router.use('/currencies', currenciesRoutes)
 // router.use('/currencies', verifyToken, currenciesRoutes)
 router.use('/auth', authRoutes)
-
-module.exports = router
+router.use('/user',userRoutes)
+export { router }

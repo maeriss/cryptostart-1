@@ -1,7 +1,7 @@
-// const jwt = require('jsonwebtoken')
-const express = require('express')
+// import jwt from 'jsonwebtoken'
+import express from 'express'
 
-const tokenUtils = require('../utils/token-utils.js')
+import { createToken, checkToken } from '../utils/token-utils.js'
 
 const router = new express.Router()
 
@@ -42,7 +42,7 @@ router.post('/token', (req, res) => {
     username
   }
   // const token = jwt.sign(payload, secret, options)
-  const token = tokenUtils.createToken(payload)
+  const token = createToken(payload)
 
   res.status(201).json({
     success: true,
@@ -64,7 +64,7 @@ router.get('/me', (req, res) => {
     .header('Pragma', 'no-cache')
 
   try {
-    const payload = tokenUtils.checkToken(token)
+    const payload = checkToken(token)
     // const login = payload.login
     // Chercher et trouver l'utilisateur correspondant à ce login
     // TODO: à faire avec mongodb
@@ -85,4 +85,4 @@ router.get('/me', (req, res) => {
   }
 })
 
-module.exports = router
+export { router as authRoutes }
