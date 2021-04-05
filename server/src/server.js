@@ -1,6 +1,6 @@
 import dotenv from 'dotenv'
 import express from 'express'
-// import cors from 'cors')
+import cors from 'cors' // accec control check ,to allow any client
 // import jwt from 'jsonwebtoken')
 import { router } from './routes/index.js'
 import { getConnection } from './connect.js'
@@ -13,6 +13,7 @@ const port = process.env.PORT||3000
 
 app.use(express.json()) // permet de lire le corps de la requête
 app.use(express.static('static'))
+app.use(cors())
 app.use('/api/v1/', router)
 /**
 app.use(cors())
