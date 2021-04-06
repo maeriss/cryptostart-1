@@ -19,13 +19,17 @@ const USERNAME = 'marie'
 router.post('/token', (req, res) => {
   // const authorizedLogin = process.env.AUTHORIZED_LOGIN
   // const authorizedPasswd = process.env.AUTHORIZED_PASSWD
+  const response = res
+    .header('Cache-Control', 'private, no-cache, no-store, must-revalidate')
+    .header('Expires', '-1')
+    .header('Pragma', 'no-cache')
 
   const body = req.body
   const { username, password } = body
   getUserByUsername(username)
   .then(user => {
     if (!username || !password) {
-      res.status(401).json({
+      response.status(401).json({
         success: false,
         message: 'Login and password are required'
       })
@@ -35,7 +39,7 @@ router.post('/token', (req, res) => {
     // const isValidCredentials = username === user.username && password === user.password
     compareHash(password, user.password).then(isValidCredentials => {
       if (!isValidCredentials) {
-        res.status(401).json({
+        response.status(401).json({
           success: false,
           message: 'Invalid credentials'
         })
@@ -48,7 +52,7 @@ router.post('/token', (req, res) => {
       // const token = jwt.sign(payload, secret, options)
       const token = createToken(payload)
     
-      res.status(201).json({
+      response.status(201).json({
         success: true,
         user: {
           ...user,
