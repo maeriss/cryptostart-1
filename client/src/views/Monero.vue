@@ -47,6 +47,7 @@
 h2 {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
+    font-size: 50px;
     margin-top: 30px;
 }
 
@@ -83,12 +84,17 @@ h1 {
     margin-left: auto;
     margin-right: auto;
     width: 40em;
-    text-justify: auto;
+    text-align: justify;
 }
 
 @media screen and (max-width: 759px) {
   .blocktext {
     width: 100%
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }
 
