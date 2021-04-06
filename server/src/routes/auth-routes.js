@@ -54,11 +54,8 @@ router.post('/token', (req, res) => {
     
       response.status(201).json({
         success: true,
-        user: {
-          ...user,
-          password: undefined
-        },
-        token
+        token,
+        message: username
       })
     })
   })

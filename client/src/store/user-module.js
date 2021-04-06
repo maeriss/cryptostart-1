@@ -25,7 +25,7 @@ export default {
         login ({ commit }, credentials) {
             return api.login(credentials)
             .then(userdata => {
-            const { success, user, token, message } = userdata
+            const { success, token, message } = userdata
             if (!success) {
                 // TODO: Afficher proprement le message contenu dans `message` dans l'interface
                 //       et non dans la console comme ici
@@ -34,7 +34,7 @@ export default {
                 return userdata.status(400).send({ message })
             }
             localStorage.setItem('token', token)
-            commit('setUser', user)
+            commit('setUser', message)
             // commit('setToken', token)
             })
         },
