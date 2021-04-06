@@ -15,7 +15,7 @@
                 <button type="submit">Login</button>
             </div>
             <div class="submitButton">
-                <button @click="$router.push('/')">Register</button>
+                <button @click="$router.push('/home')">Register</button>
             </div>
             <!-- <router-link to="/register" >Register</router-link> -->
             <!-- <a href="/register">Register</a> -->
