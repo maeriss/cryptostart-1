@@ -126,7 +126,7 @@ body {
 }
 
 footer {
-    position: relative;
+    bottom: 0;
     flex-shrink: 0;
     border-top: 1px dashed #2c3e50;
     width: 100%;
