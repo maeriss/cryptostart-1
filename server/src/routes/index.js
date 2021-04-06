@@ -13,4 +13,12 @@ router.use('/currencies', currenciesRoutes)
 // router.use('/currencies', verifyToken, currenciesRoutes)
 router.use('/auth', authRoutes)
 router.use('/user',userRoutes)
+// checkToken
+router.get('/me',verifyToken, (req, res) => {
+  res.json({
+    succes:true,
+    user: {}
+  })
+})
+
 export { router }

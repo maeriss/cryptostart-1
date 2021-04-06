@@ -1,44 +1,51 @@
 <template>
     <div class="loginForm">
-        <h2 class="loginHeading">Login</h2>
-        <p>Veuillez rentrer votre username et votre mot de passe pour vous connecter</p>
-        <form @submit.prevent="tryToLogin">
+        <h2 class="loginHeading">Register</h2>
+        <p>Veuillez entrer vos informations</p>
+        <form @submit.prevent="register">
             <div id="labels" class="column">
+                <label for="firstname">Votre prénom</label>
+                <label for="lastname">Votre nom de famille</label>
+                <label for="email">Votre email</label>
                 <label for="username">Votre username</label>
                 <label for="password">Mot de passe</label>
             </div>
             <div class="column">
-                <input placeholder="username" type="text" v-model="username" id="login">
+                <input placeholder="firstname" type="text" v-model="firstname" id="firstname">
+                <input placeholder="lastname" type="text" v-model="lastname" id="lastname">
+                <input placeholder="email" type="email" v-model="email" id="email">
+                <input placeholder="username" type="text" v-model="username" id="username">
                 <input placeholder="password" type="password" v-model="password" id="password">
             </div>
             <div class="submitButton">
-                <button type="submit">Login</button>
+                <button type="submit">Register</button>
             </div>
-            <div class="submitButton">
-                <button @click="$router.push('/')">Register</button>
-            </div>
-            <!-- <router-link to="/register" >Register</router-link> -->
-            <!-- <a href="/register">Register</a> -->
         </form>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'Login',
+    name: 'Register',
 
     data () {
         return {
+            lastname: undefined,
+            firstname: undefined,
+            email: undefined,
             username: undefined,
             password: undefined
         }
     },
     methods: {
-        tryToLogin () {
+        register () {
+      const firstname = this.firstname
+      const lastname = this.lastname
+      const email = this.email
       const username = this.username
       const password = this.password
-      this.$store.dispatch('login', { username, password })
-      this.$router.push('/')
+      this.$store.dispatch('register', { firstname, lastname, email, username, password })
+      this.$router.push('/login')
       }
     }
 }

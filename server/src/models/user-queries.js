@@ -70,7 +70,7 @@ export function getUsers () {
  * @property {string} firstname - Prénom
  * @property {string} lastname - Nom
  * @property {string} email - Adresse email
- * @property {string} login - Nom d'utilisateur
+ * @property {string} username - Nom d'utilisateur
  * @property {string} password - Mot de passe
  *
  * @returns {Promise.<UserMongooseDocument>} user modifié

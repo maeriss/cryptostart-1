@@ -8,5 +8,14 @@ export default {
 
   checkToken (token) {
     return jsonClient.get(apiRoutes.me, { headers: { Authorization: 'Bearer ' + token } })
+  },
+
+  register (credentials) {
+    return jsonClient.post(apiRoutes.register, { body: credentials })
+  },
+
+  modify (data) {
+    return jsonClient.post(apiRoutes.update, { body: data })
   }
+
 }

@@ -7,6 +7,9 @@
     </div>
     <div v-if="!isLoggedIn" class="container">
       <h1>Vous devez être connecté(e) pour accéder au contenu du site</h1>
+      <div class="submitButton">
+                <button @click="$router.push('/register')">Register</button>
+            </div>
     </div>
   </div>
 </template>
@@ -49,6 +52,28 @@ p.blocktext {
     width: 40em;
     text-justify: auto;
 }
+.submitButton {
+    margin-top: 10px;
+}
+
+button {
+      display: inline-block;
+      background-color: #46637f;
+      border-radius: 10px;
+      border: 4px double #cccccc;
+      color: #eeeeee;
+      text-align: center;
+      font-size: 20px;
+      padding: 12px;
+      width: 170px;
+      transition: all 0.5s;
+      cursor: pointer;
+      margin: 5px;
+      z-index: 0;
+      }
+      button:hover {
+      background-color: #95b1cd;
+      }
 
 @media screen and (max-width: 759px) {
   p.blocktext {

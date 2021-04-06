@@ -64,7 +64,44 @@ export default {
             commit('setUser', user)
             return true
             })
-        }
+        },
+
+        register ({ commit }, credentials) {
+          return api.register({
+            firstname: credentials.firstname,
+            lastname: credentials.lastname,
+            email: credentials.email,
+            username: credentials.username,
+            password: credentials.password
+            })
+          .then(userdata => {
+          const { success, message } = userdata
+          if (!success) {
+              // TODO: Afficher proprement le message contenu dans `message` dans l'interface
+              //       et non dans la console comme ici
+              console.error(message)
+              // return
+              return userdata.status(400).send({ message })
+            }
+          })
+        },
+
+        modifyUser ({ commit }, userdata) {
+          const token = localStorage.getItem('token')
+          if (!token) {
+              return
+          }
+          return api.modify(userdata)
+              .then(newuserdata => {
+              const { success, message } = newuserdata
+              if (!success) {
+                  // Afficher le message d'erreur à l'utilisateur
+                  console.warn(message)
+                  return false
+              }
+              return true
+              })
+          }
     },
 
     getters: {
